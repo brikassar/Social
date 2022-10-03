@@ -1,0 +1,20 @@
+.friendsBlock{
+    display: flex;
+    grid-column: 1fr 1fr 1fr;
+    
+   
+    max-width: 100%;
+    
+    max-height: 100px;
+}
+.friendsBlockTitle{
+    text-align: center;
+    
+}
+
+.friendsBlockWrapper{
+    border: solid 1px #ffffff;
+    margin: 10px;
+    padding: 40px;
+
+}

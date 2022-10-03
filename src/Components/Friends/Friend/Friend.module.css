@@ -1,0 +1,15 @@
+.friendPhoto img {
+    width: 80px;
+    height: 80px;
+  border-radius: 40px;
+}
+
+.friendContent {
+    margin: 0 20px;
+}
+
+.friendContent .friendName {
+    text-align: center;
+    margin: 10px;
+    
+}

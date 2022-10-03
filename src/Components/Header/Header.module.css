@@ -1,0 +1,22 @@
+.header {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-color: #333336;
+    /* height: 134px; */
+}
+
+.sakurasoCat {
+    width: 200px;
+    
+}
+
+.loginBlock {
+    float: right;
+    margin-right: 30px;
+    margin-top: 50px;
+}
+
+.loginBlock a {
+    color: white;
+}
+  

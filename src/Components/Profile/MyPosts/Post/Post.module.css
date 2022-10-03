@@ -1,0 +1,13 @@
+.post{
+    background-color: #49494b;
+    padding: 10px;
+  }
+.post img{
+  width: 80px;
+  border-radius: 30px;
+}
+
+.post .likesArea{
+  font-size: 10px;
+}
+

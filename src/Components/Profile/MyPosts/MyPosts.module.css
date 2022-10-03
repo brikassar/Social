@@ -1,0 +1,21 @@
+.messagesBlock{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 0.5fr);
+    background-color: #57575a;
+    padding: 0px 10px;
+  }
+
+.postBlock .textArea {
+  width: 400px;
+  height: 60px;
+  resize: none;
+  margin-top: 15px;
+
+  /* grid-column: 2/3; */
+  overflow: hidden;
+}
+
+.postBlock .button {
+grid-column: 1/3;
+}

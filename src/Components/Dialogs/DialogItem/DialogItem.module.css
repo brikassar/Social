@@ -1,0 +1,28 @@
+.dialog a {
+    /* padding: 10px; */
+    text-decoration: none;
+    color: #ffffff;
+
+    
+}
+
+.dialog a.active{
+    color: #ffd700;
+}
+
+.dialog .dialogAvatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+
+}
+
+.dialog {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    max-height: 70px;
+    margin: 20px;
+    vertical-align: middle;
+    
+}
+

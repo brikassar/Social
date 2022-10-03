@@ -1,0 +1,23 @@
+.nav{
+    background-color: #222226;
+    color: aliceblue;
+}
+
+.nav div a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav div a.active {
+    color: #ffd900;
+}
+
+.nav div a:hover {
+    color: #c9c9c9;
+}
+
+.nav div a.active:hover {
+    color: #ffd900;
+}

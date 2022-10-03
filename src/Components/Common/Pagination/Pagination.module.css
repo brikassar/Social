@@ -1,0 +1,9 @@
+.selectedPage {
+    font-weight: bold;
+}
+
+.paginator {
+    color: darkgray;
+   
+    margin-bottom: 10px;
+}

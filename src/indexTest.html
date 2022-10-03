@@ -1,0 +1,18 @@
+<script>
+  let a = {
+    name: 'Polina',
+    profession: 'teacher',
+    sex: 'female',
+    isonline: true,
+    date: ['1,2,3,4,5'],
+    students: {
+      name: 'Artem',
+      family: 'Ganza',
+    },
+  };
+
+  let b = { ...a };
+  //   b.students = { ...a.students };
+
+  b.name = 'GanzaArtem';
+</script>

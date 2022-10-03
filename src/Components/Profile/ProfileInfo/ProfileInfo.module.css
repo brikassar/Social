@@ -1,0 +1,34 @@
+.profileInfo {
+    padding: 0px 0px;
+}
+
+.profileInfo img {
+    height: 200px;
+}
+
+.descriptionBlock {
+    padding: 10px;
+}
+
+.updateProfileButtonHide {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: 0.3s ease-out;
+}
+
+.updateProfileButtonActive {
+    display: block;
+    margin:20px 0;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.contacts {
+    display: block;
+    padding-left: 15px;
+
+}
+
