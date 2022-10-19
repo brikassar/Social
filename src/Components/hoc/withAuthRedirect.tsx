@@ -5,7 +5,6 @@ import {AppStateType} from "../../Redux/reduxStore";
 
 
 
-
 let mapStateToPropsForRedirect = (state: AppStateType) => {
   return {
     isAuth: state.auth.isAuth
@@ -29,6 +28,8 @@ export function withAuthRedirect<WCP>(WrappedComponent: React.ComponentType<WCP>
       return <Navigate to ='/login'/>
     }
 
+    // @ts-ignore
+    // Fix it Later
     return <WrappedComponent {...restProps as WCP}/>
   }
 

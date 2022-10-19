@@ -2,8 +2,13 @@ import React from 'react'
 import {Field, ErrorMessage, Form} from 'formik'
 import TextError from './TextError'
 import classes from "../Profile/ProfileInfo/ProfileInfo.module.css";
+import {CommonFormikPropsType, FormikControlTypes} from "./FormikControl";
 
-function ObjectInput(props) {
+
+
+
+const ObjectInput: React.FC<FormikControlTypes & CommonFormikPropsType> = (props) =>  {
+    debugger;
     const {label, name, options, ...rest} = props
 
     return (

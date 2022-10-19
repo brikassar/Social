@@ -70,6 +70,8 @@ const usersReducer = (state = initialState, action: ActionTypes): InitialStateTy
     }
 };
 
+
+
 type ActionTypes =
     FollowSuccessActionType
     | UnfollowSuccessActionType
@@ -122,7 +124,7 @@ type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>
 
 //thunk getUsers when you clicked on number
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
-    return async (dispatch, getState) => {
+    return async (dispatch, getState: getStateType) => {
 
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(page));

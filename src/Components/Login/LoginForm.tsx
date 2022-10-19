@@ -4,8 +4,24 @@ import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import FormikControl from "../Formik/FormikControl";
 
-const LoginForm = ({login, captchaUrl}) => {
+interface LoginFormValuesTypes {
+    captchaUrl: string | null,
+    login: (email: string | null, password: string | null, rememberMe: boolean,
+     setAuthStatus: any, setSubmitting: any, captcha: string) => void
+}
 
+const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
+
+    const initialValues = {
+        email: '',
+        password: '',
+        rememberMe: false,
+        isValid: true,
+        captcha: '',
+
+    }
+
+    type initialValuesTypes = typeof initialValues;
 
     const validationSchemaLoginForm = Yup.object().shape({
         password: Yup.string()
@@ -19,15 +35,8 @@ const LoginForm = ({login, captchaUrl}) => {
         //     .required('Required')
     })
 
-    const initialValues = {
-        email: '',
-        password: '',
-        rememberMe: false,
-        isValid: true,
-        captcha: ''
-    }
 
-    const onSubmit = (values, onSubmitProps) => {
+    const onSubmit = (values: initialValuesTypes, onSubmitProps: any) => {
         login(
             values.email,
             values.password,

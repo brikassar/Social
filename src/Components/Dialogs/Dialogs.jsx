@@ -5,13 +5,13 @@ import Message from './Message/Message';
 import { Navigate } from 'react-router-dom';
 import AddMessageForm from './AddMesageForm';
 
-
-
 const Dialogs = (props) => {
+
 
   console.log('DialogsReturn')
 
   let state = props.dialogsPage;
+
 
   let dialogsElements = state.dialogsData.map((dialog) => (
     <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />
@@ -22,8 +22,8 @@ const Dialogs = (props) => {
   ));
 
 
-  if (!props.isAuth) return <Navigate to={'/login'} />
-  console.log('renderMessage')
+
+   console.log('renderMessage')
   return (
 
     <div className={classes.dialogs}>

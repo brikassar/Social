@@ -1,10 +1,7 @@
-import {authAPI, securityAPI} from "../api/api";
-
+import {authAPI, ResultCodesEnum, ResultCodeForCaptcha, securityAPI} from "../api/api";
 
 const SET_USER_DATA = 'my-app/authReducer/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'my-app/authReducer/GET_CAPTCHA_URL_SUCCESS';
-
-
 
 let initialState = {
     userId: null as number | null,
@@ -23,12 +20,9 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
         case SET_USER_DATA:
         case GET_CAPTCHA_URL_SUCCESS:
             return {
-
                 ...state,
                 ...action.payload,
-                userIЫsd: '5ff',
             };
-
 
         default:
             return state;
@@ -65,10 +59,11 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessAc
 });
 
 export const getAuthUsersData = () => async (dispatch: any) => {
-    const response = await authAPI.me();
+    const meData = await authAPI.me();
 
-    if (response.data.resultCode === 0) {
-        let {id, email, login} = response.data.data;
+
+    if (meData.resultCode === ResultCodesEnum.Success) {
+        let {id, email, login} = meData.data;
         dispatch(setAuthUserData(id, email, login, true));
     }
 };
@@ -77,24 +72,23 @@ export const getAuthUsersData = () => async (dispatch: any) => {
 export const login = (email: string | null, password: string | null, rememberMe: boolean,
                       setAuthStatus: any, setSubmitting: any, captcha: string) => async (dispatch: any) => {
 
-        const response = await authAPI.login(email, password, rememberMe, captcha);
+        const loginData = await authAPI.login(email, password, rememberMe, captcha);
 
-        if (response.data.resultCode === 0) {
+        if (loginData.resultCode === ResultCodesEnum.Success) {
             dispatch(getAuthUsersData());
         } else {
-            if (response.data.resultCode === 10) {
+            if (loginData.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
                 dispatch(getCaptchaUrl())
             }
 
-            setAuthStatus(response.data.messages);
+            setAuthStatus(loginData.messages);
         }
         setSubmitting(false);
-    }
-;
+    };
 
 export const logout = () => async (dispatch: any) => {
     const response = await authAPI.logout();
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(setAuthUserData(null, null, null, false));
     }
 };

@@ -4,10 +4,10 @@ import {Navigate} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {selectCaptchaUrl, selectIsAuth} from '../../Redux/Selectors/authSelector';
 import LoginForm from "./LoginForm";
+import {AppStateType} from "../../Redux/reduxStore";
 
 
-
-const LoginContainer = ({isAuth, login, captchaUrl}) => {
+const LoginContainer: React.FC<MapStateToPropsType & MapDispatchToPropsType> = ({isAuth, login, captchaUrl}) => {
     if (isAuth) {
         return <Navigate to={'/profile'}/>;
     }
@@ -19,7 +19,18 @@ const LoginContainer = ({isAuth, login, captchaUrl}) => {
     );
 };
 
-let mapStateToProps = (state) => {
+
+type MapDispatchToPropsType = {
+    login:  (email: string | null, password: string | null, rememberMe: boolean,
+             setAuthStatus: any, setSubmitting: any, captcha: string) => void
+}
+
+type MapStateToPropsType = {
+    isAuth: boolean,
+    captchaUrl: string | null
+}
+
+let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         isAuth: selectIsAuth(state),
         captchaUrl: selectCaptchaUrl(state)

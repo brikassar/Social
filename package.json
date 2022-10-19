@@ -8,9 +8,9 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.0.0",
-    "@types/node": "^18.7.15",
-    "@types/react": "^18.0.18",
+    "@types/jest": "^29.1.2",
+    "@types/node": "^18.8.5",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
@@ -60,6 +60,7 @@
   "devDependencies": {
     "gh-pages": "^4.0.0",
     "prettier": "2.7.1",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

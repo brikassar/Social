@@ -1,4 +1,4 @@
-import {
+  import {
   applyMiddleware,
   combineReducers, compose,
   legacy_createStore as createStore,
