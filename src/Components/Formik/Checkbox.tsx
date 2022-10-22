@@ -1,10 +1,10 @@
 import React from 'react';
 import {Field} from "formik";
-import {CommonFormikPropsType} from "./FormikControl";
+import {FormikValues} from "formik/dist/types";
 
 
 
-const Checkbox: React.FC<CommonFormikPropsType> = (props) => {
+const Checkbox: React.FC<FormikValues> = (props) => {
     const {label, name, ...rest} = props
     return (
         <div className='formControl'>

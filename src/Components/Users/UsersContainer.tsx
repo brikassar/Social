@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {setCurrentPage, requestUsers, follow, unfollow} from '../../Redux/usersReducer'
+import {requestUsers, follow, unfollow} from '../../Redux/usersReducer'
 import Users from './Users'
 import {withAuthRedirect} from '../hoc/withAuthRedirect'
 import {compose} from 'redux';
@@ -30,7 +30,7 @@ type MapDispatchToPropsType = {
     unfollow: (userId: number) => void
     follow: (userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
-    setCurrentPage: any;
+    setCurrentPage?: any;
 }
 
 type OwnPropsType = {
@@ -92,7 +92,7 @@ export default compose(
         unfollow,
         follow,
         getUsers: requestUsers,
-        setCurrentPage
+
 
     }),
     withAuthRedirect)

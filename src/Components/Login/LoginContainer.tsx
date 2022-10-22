@@ -22,7 +22,7 @@ const LoginContainer: React.FC<MapStateToPropsType & MapDispatchToPropsType> = (
 
 type MapDispatchToPropsType = {
     login:  (email: string | null, password: string | null, rememberMe: boolean,
-             setAuthStatus: any, setSubmitting: any, captcha: string) => void
+             setAuthStatus: (status: any) => void, setSubmitting: (isSubmitting: boolean) => void, captcha: string) => void
 }
 
 type MapStateToPropsType = {

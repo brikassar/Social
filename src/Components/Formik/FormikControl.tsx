@@ -3,26 +3,24 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import Checkbox from "./Checkbox";
 import ObjectInput from "./ObjectInput";
+import {FormikValues} from "formik/dist/types";
+import {FieldProps} from "formik";
 
-
-export interface FormikControlTypes {
-    control?: string
-    type?: string
-    reset?: string
-    placeholder?: string
-    options?: any
-}
-
-export interface CommonFormikPropsType {
-    label?: string
-    name: string
+export interface FormikControlPropertiesType {
+    control: 'email' | 'textarea' | 'array' | 'radio' | 'checkbox' | 'date' | 'chakraInput' | 'input'
+    name: 'email' | 'password' | 'rememberMe' | 'captcha'
+    type?: 'email' | 'password' | 'text'
+    as?: 'textarea'
 }
 
 
-const FormikControl: React.FC<FormikControlTypes & CommonFormikPropsType> = (props) => {
+type OwnProps = FormikValues & FormikControlPropertiesType
+
+
+const FormikControl: React.FC<OwnProps> = (props) => {
     const {control, ...rest} = props
     switch (control) {
-        case 'input':
+        case 'email':
             return <Input {...rest} />
         case 'textarea':
             return <Textarea {...rest} />

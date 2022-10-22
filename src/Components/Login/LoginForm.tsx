@@ -1,16 +1,26 @@
-import classes from "../Formik/Formik.module.css";
-import React from "react";
-import {Formik, Form} from 'formik';
-import * as Yup from 'yup';
-import FormikControl from "../Formik/FormikControl";
+import classes from "../Formik/Formik.module.css"
+import React from "react"
+import {Formik, Form} from 'formik'
+import * as Yup from 'yup'
+import FormikControl from "../Formik/FormikControl"
+import {FormikProps, FormikValues} from "formik/dist/types"
 
-interface LoginFormValuesTypes {
-    captchaUrl: string | null,
-    login: (email: string | null, password: string | null, rememberMe: boolean,
-     setAuthStatus: any, setSubmitting: any, captcha: string) => void
+
+interface LoginPropsType {
+    login: ((email: string | null,
+             password: string | null,
+             rememberMe: boolean,
+             setAuthStatus: (status: any) => void,
+             setSubmitting: (isSubmitting: boolean) => void,
+             captcha: string) => void)
+    captchaUrl: string | null
 }
 
-const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
+
+
+type OwnProps = LoginPropsType & FormikValues
+
+const LoginForm: React.FC<OwnProps> = ({login, captchaUrl}) => {
 
     const initialValues = {
         email: '',
@@ -18,10 +28,10 @@ const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
         rememberMe: false,
         isValid: true,
         captcha: '',
-
     }
 
-    type initialValuesTypes = typeof initialValues;
+    type LoginInitialValuesTypes = typeof initialValues;
+
 
     const validationSchemaLoginForm = Yup.object().shape({
         password: Yup.string()
@@ -36,7 +46,14 @@ const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
     })
 
 
-    const onSubmit = (values: initialValuesTypes, onSubmitProps: any) => {
+    interface OnSubmitTypes {
+        setStatus: (status: any) => void;
+        setSubmitting: (isSubmitting: boolean) => void
+    }
+
+
+    const onSubmit = (values: LoginInitialValuesTypes, onSubmitProps: OnSubmitTypes) => {
+
         login(
             values.email,
             values.password,
@@ -68,8 +85,8 @@ const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
 
                             {captchaUrl && <img src={captchaUrl} alt='captcha'/>}
                             {captchaUrl &&
-                            <FormikControl reset='reset' control='input' name='captcha' type='text' label='Captcha'
-                                           placeholder='Type the symbols'/>}
+                                <FormikControl reset='reset' control='input' name='captcha' type='text' label='Captcha'
+                                               placeholder='Type the symbols'/>}
 
                             <button
                                 type='submit'
@@ -80,11 +97,11 @@ const LoginForm: React.FC<LoginFormValuesTypes> = ({login, captchaUrl}) => {
 
                             {formik.status && <div>{formik.status}</div>}
                         </Form>
-                    );
+                    )
                 }}
             </Formik>
         </div>
-    );
-};
+    )
+}
 
-export default LoginForm;
+export default LoginForm

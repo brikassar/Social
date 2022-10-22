@@ -1,11 +1,13 @@
-import React, {ReactNode} from 'react'
+import React from 'react'
 import classes from './Formik.module.css'
+import {FormikValues} from "formik/dist/types";
 
 
-const TextError: React.FC<any> = (props) => {
+const TextError: React.FC<FormikValues> = ({children, ...rest}) => {
+
     return (
         <div className={classes.error}>
-            {props.children}
+            {children}
         </div>
     );
 };

@@ -2,13 +2,12 @@ import React from 'react';
 import {ErrorMessage, Field} from "formik";
 import TextError from "./TextError";
 import classes from './Formik.module.css'
-import {CommonFormikPropsType} from "./FormikControl";
+import {FormikValues} from "formik/dist/types";
 
 
 
-const Input: React.FC<CommonFormikPropsType> = (props) => {
+const Input: React.FC<FormikValues> = (props) => {
     const { label, name, ...rest } = props
-
 
     return (
         <div className={classes.formControl}>
