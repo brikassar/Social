@@ -1,23 +1,23 @@
-  import {
-  applyMiddleware,
-  combineReducers, compose,
-  legacy_createStore as createStore,
+import {
+    Action,
+    applyMiddleware,
+    combineReducers, compose,
+    legacy_createStore as createStore,
 } from 'redux';
 import authReducer from './authReducer';
 import dialogsReducer from './dialogsReducer';
 import profileReducer from './profileReducer';
 import usersReducer from './usersReducer';
-import thunkMiddleware from 'redux-thunk';
+import thunkMiddleware, {ThunkAction} from 'redux-thunk';
 import AppReducer from "./AppReducer";
 
 
-
 let rootReducer = combineReducers({
-  profilePage: profileReducer,
-  dialogsPage: dialogsReducer,
-  usersPage: usersReducer, 
-  auth: authReducer,
-  app: AppReducer,
+    profilePage: profileReducer,
+    dialogsPage: dialogsReducer,
+    usersPage: usersReducer,
+    auth: authReducer,
+    app: AppReducer,
 });
 
 type RootReducerType = typeof rootReducer;
@@ -30,11 +30,13 @@ let state: AppStateType;
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunkMiddleware)
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)
 ));
 
-type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U : never
-export type InferActionTypes<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropertiesTypes<T>>
+type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never
+export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<PropertiesTypes<T>>
+
+export type BaseThunkType<A extends Action = Action, R = Promise<void>> = ThunkAction<R, AppStateType, unknown, A>
 
 // @ts-ignore
 window.__store__ = store;

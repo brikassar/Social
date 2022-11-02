@@ -3,7 +3,7 @@ import React from "react"
 import {Formik, Form} from 'formik'
 import * as Yup from 'yup'
 import FormikControl from "../Formik/FormikControl"
-import {FormikProps, FormikValues} from "formik/dist/types"
+import {FormikValues} from "formik/dist/types"
 
 
 interface LoginPropsType {
@@ -15,7 +15,6 @@ interface LoginPropsType {
              captcha: string) => void)
     captchaUrl: string | null
 }
-
 
 
 type OwnProps = LoginPropsType & FormikValues
@@ -41,8 +40,6 @@ const LoginForm: React.FC<OwnProps> = ({login, captchaUrl}) => {
         email: Yup.string()
             .email('Invalid email format')
             .required('Required'),
-        // captcha: Yup.string()
-        //     .required('Required')
     })
 
 
@@ -81,6 +78,8 @@ const LoginForm: React.FC<OwnProps> = ({login, captchaUrl}) => {
                             <FormikControl control='input' name='email' type='email' label='Email'/>
                             <FormikControl control='input' name='password' type='password' label='Password'/>
                             <FormikControl control='checkbox' name='rememberMe' label='Remember me'/>
+
+
 
 
                             {captchaUrl && <img src={captchaUrl} alt='captcha'/>}

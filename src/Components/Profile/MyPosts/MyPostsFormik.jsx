@@ -1,4 +1,4 @@
-import {Formik, Form, Field, ErrorMessage} from "formik";
+import {Formik, Form} from "formik";
 import * as Yup from "yup";
 import classes from './MyPosts.module.css';
 import FormikControl from "../../Formik/FormikControl";
@@ -29,7 +29,7 @@ const AddUserPostForm = (props) => {
                 validationSchema={validationSchemaMessageForm}
                 onSubmit={onSubmit}>
 
-                {(formik) => (
+                {() => (
                     <Form>
                         <FormikControl control='textarea' name='text'/>
 

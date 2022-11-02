@@ -16,7 +16,6 @@ import {
 import {UsersType} from "../../types/types";
 import {AppStateType} from "../../Redux/reduxStore";
 
-
 type MapStateToPropsType = {
     currentPage: number
     pageSize: number
@@ -30,7 +29,7 @@ type MapDispatchToPropsType = {
     unfollow: (userId: number) => void
     follow: (userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
-    setCurrentPage?: any;
+    setCurrentPage?: any
 }
 
 type OwnPropsType = {
@@ -47,13 +46,11 @@ class UsersContainer extends React.Component<PropsType> {
         this.props.getUsers(currentPage, pageSize);
     }
 
-
     onPageChanged = (pageNumber: number) => {
         const {pageSize} = this.props;
         this.props.getUsers(pageNumber, pageSize);
-        this.props.setCurrentPage(pageNumber);
+        //this.props.setCurrentPage(pageNumber);
     }
-
 
     render() {
 
@@ -70,8 +67,8 @@ class UsersContainer extends React.Component<PropsType> {
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}/>
         </>
-    };
-};
+    }
+}
 
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
@@ -92,10 +89,8 @@ export default compose(
         unfollow,
         follow,
         getUsers: requestUsers,
-
-
     }),
     withAuthRedirect)
-(UsersContainer);
+(UsersContainer)
 
 

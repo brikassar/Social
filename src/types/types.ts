@@ -1,13 +1,19 @@
-export type PhotosType = {
+export interface PhotosType {
     small: string | null,
     large: string | null
 }
-export type PostDataType = {
+
+export interface SavePhotoResponseDataType {
+    photos: PhotosType
+}
+
+export interface PostDataType {
     id: number,
     message: string,
     likesCount: number
 }
-export type ProfileType = {
+
+export interface ProfileType {
     userId: number,
     lookingForAJob: boolean,
     lookingForAJobDescription: string,
@@ -15,7 +21,8 @@ export type ProfileType = {
     contacts: ContactsType,
     photos: PhotosType
 }
-export type ContactsType = {
+
+export interface ContactsType {
     github: string,
     vk: string
     facebook: string
@@ -25,7 +32,8 @@ export type ContactsType = {
     youtube: string
     mainLink: string
 }
-export type UsersType = {
+
+export interface UsersType {
     items: UsersItemsType,
     totalCount: string,
     error: string
@@ -33,7 +41,7 @@ export type UsersType = {
     id?: number | null
 }
 
-type UsersItemsType = {
+interface UsersItemsType {
     id: number,
     name: string,
     status: string,

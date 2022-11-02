@@ -27,7 +27,7 @@ const MyPosts = (props) => {
     <div className={classes.postBlock}>
       <div className={classes.messagesBlock}>
         <div>Add post:</div>
-        <AddUserPostForm addPost={props.addPost} />
+        <AddUserPostForm addPost={props.addPost}  />
       </div>
       {posts}
     </div>

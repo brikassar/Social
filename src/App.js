@@ -21,7 +21,7 @@ const News = lazy(() => import('./Components/News/News'));
 
 
 class App extends React.Component {
-  catchAllUnhandledErrors = (reason, promise) => {
+  catchAllUnhandledErrors = () => {
     alert('Some error occurred');
 
   }
@@ -77,7 +77,7 @@ let AppContainer = compose(
 
  connect(mapStateToProps, { initializeApp })) (App);
 
-const MainApp = (props) => {
+const MainApp = () => {
 return (
   <HashRouter >
   <Provider store={store}>
