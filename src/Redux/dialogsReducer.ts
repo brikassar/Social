@@ -32,9 +32,9 @@ let initialState = {
 };
 
 export const actions = {
-  sendMessage: (newMessageBody: string, messageId: number) => ({
+  sendMessage: (messageText: string, messageId: number) => ({
     type: 'my-app/dialogsReducer/SEND-MESSAGE',
-    newMessageBody,
+    newMessageBody: messageText,
     messageId,
   })
 }

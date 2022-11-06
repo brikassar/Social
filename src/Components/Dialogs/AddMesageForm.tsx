@@ -2,34 +2,38 @@ import {Formik, Form} from "formik"
 import * as Yup from "yup"
 import FormikControl from "../Formik/FormikControl"
 import React from "react"
+import {FormikValues} from "formik/dist/types";
 
-const AddMessageForm = (props) => {
+
+const AddMessageForm: React.FC<FormikValues> = (props) => {
 
 
     const validationSchemaMessageForm = Yup.object().shape({
-        newMessageBody: Yup.string()
+        messageText: Yup.string()
             .max(1000, "Must be shorter than 1000 characters")
             .required("")
     })
 
 
-    const onSubmit = (newMessageBody, {resetForm}) => {
-        props.sendMessage(newMessageBody.newMessageBody,)
-        resetForm({newMessageBody: ''})
+    const onSubmit = (messageText: InitialValuesType, {resetForm}: FormikValues) => {
+        props.sendMessage(messageText.messageText,)
+        resetForm({messageText: ''})
     }
 
+    type InitialValuesType = typeof initialValues
     const initialValues = {
-        newMessageBody: ''
+        messageText: ''
     }
+
 
     return (
         <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchemaMessageForm}>
-            {(formik) => (
+            {() => (
                 <Form>
-                    <FormikControl control='textarea' name='newMessageBody'/>
+                    <FormikControl control='textarea' name='messageText'/>
                     <button type={'submit'}>Send</button>
                 </Form>
             )}
@@ -39,3 +43,4 @@ const AddMessageForm = (props) => {
 }
 
 export default AddMessageForm
+

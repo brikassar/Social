@@ -7,7 +7,7 @@ import {FormikValues} from "formik/dist/types";
 
 export interface FormikControlPropertiesType {
     control: 'input' | 'textarea' | 'array' | 'radio' | 'checkbox' | 'date' | 'chakraInput'
-    name: 'email' | 'password' | 'rememberMe' | 'captcha'
+    name: 'email' | 'password' | 'rememberMe' | 'captcha' | 'messageText'
     type?: 'email' | 'password' | 'text'
     as?: 'textarea'
 }

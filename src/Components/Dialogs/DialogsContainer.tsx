@@ -5,8 +5,9 @@ import {withAuthRedirect} from '../hoc/withAuthRedirect';
 import {compose} from 'redux';
 import {selectDialogsPage} from '../../Redux/Selectors/dialogsSelector';
 import {selectIsAuth} from "../../Redux/Selectors/authSelector";
+import {AppStateType} from "../../Redux/reduxStore";
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         dialogsPage: selectDialogsPage(state),
         isAuth: selectIsAuth(state),

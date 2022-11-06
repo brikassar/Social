@@ -4,7 +4,12 @@ import classes from './DialogItem.module.css';
 
 /* Dialogs name list */
 
-const DialogItem = (props) => {
+interface PropsType {
+    id: number,
+    name: string
+}
+
+const DialogItem: React.FC<PropsType> = (props) => {
   let path = '/dialogs/' + props.id;
 
   return (

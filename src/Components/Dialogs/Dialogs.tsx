@@ -2,11 +2,16 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import classes from './Dialogs.module.css';
 import Message from './Message/Message';
-import { Navigate } from 'react-router-dom';
 import AddMessageForm from './AddMesageForm';
+import {InitialStateType} from "../../Redux/dialogsReducer";
 
-const Dialogs = (props) => {
+interface PropsType {
+    dialogsPage: InitialStateType,
+    sendMessage: (messageText: string) => void,
+    id: number
+}
 
+const Dialogs: React.FC<PropsType> = (props) => {
 
   console.log('DialogsReturn')
 
@@ -20,7 +25,6 @@ const Dialogs = (props) => {
   let messagesElements = state.messagesData.map((message) => (
     <Message key={message.id} message={message.message} id={message.id} />
   ));
-
 
 
    console.log('renderMessage')
